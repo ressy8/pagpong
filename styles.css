@@ -1,0 +1,147 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  :root {
+    --hue: 250;
+    --saturation: 85%;
+    --foreground-color: hsl(var(--hue), var(--saturation), 50%);
+    --background-color: hsl(var(--hue), var(--saturation), 20%);
+
+  }
+  
+  body {
+    margin: 0;
+    background-color: var(--background-color);
+    overflow: hidden;
+  }
+  
+  .paddle {
+    --position: 50;
+  
+    position: absolute;
+    background-color: var(--foreground-color);
+    top: calc(var(--position) * 1vh);
+    transform: translateY(-50%);
+    width: 1vh;
+    height: 10vh;
+  }
+  
+  .paddle.left {
+    left: 1vw;
+    background-color: red;
+  }
+  
+  .paddle.right {
+    right: 1vw;
+    background-color: blue
+  }
+  
+  .ball {
+    --x: 50;
+    --y: 50;
+  
+    position: absolute;
+    background-color: white;
+    left: calc(var(--x) * 1vw);
+    top: calc(var(--y) * 1vh);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    width: 2.5vh;
+    height: 2.5vh;
+  }
+  
+  .score {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 7vh;
+    color: var(--foreground-color);
+  }
+  
+  .score > * {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 0 1vh;
+    margin: 1vh 0;
+    opacity: .5;
+  }
+  
+  .score > :first-child {
+    text-align: right;
+    border-right: .5vh solid var(--foreground-color);
+  }
+
+  .difficulty {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 7vh;
+    color: var(--foreground-color);
+  }
+  .difficulty > * {
+
+    padding: 0 1vh;
+    margin: 1vh 0;
+    opacity: .5;
+  }
+  .difficulty > :first-child {
+    text-align: right;
+    border-right: .5vh solid var(--foreground-color);
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+  
+  button {
+    margin: 1rem;
+  }
+  
+  .btn {
+    background-color: var(--background-color);
+    color: #222;
+    padding: .5em 1em;
+    border: none;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+  
+    --background-color: #E3E3E3;
+    --border-size: 2px;
+    --accent-color: #0AF;
+  }
+  
+  .btn.btn-border-pop::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    border: var(--border-size) solid var(--background-color);
+    transition: top, left, right, bottom, 100ms ease-in-out;
+  }
+  
+  .btn.btn-border-pop:hover::before,
+  .btn.btn-border-pop:focus::before {
+    top: calc(var(--border-size) * -2);
+    left: calc(var(--border-size) * -2);
+    right: calc(var(--border-size) * -2);
+    bottom: calc(var(--border-size) * -2);
+  }
+
+  .diff-display {
+    font-size: 2rem;
+  }
+  
